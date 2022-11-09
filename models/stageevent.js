@@ -1,6 +1,9 @@
 const {Sequelize, DataTypes, Model} = require('sequelize')
 const sequelize = new Sequelize(process.env.PG_URI)
 
+import { Stage } from 'stage.js'
+import { Event } from 'event.js'
+
 class StageEvent extends Model{}
 
 StageEvent.init({
@@ -14,7 +17,7 @@ StageEvent.init({
         allowNull: false
     },
     event_id: {
-        type: DataTypes.SMALLINIT,
+        type: DataTypes.SMALLINT,
         allowNull: false
     }
 }, {
