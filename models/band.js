@@ -28,7 +28,7 @@ Band.init({
 }, {
     sequelize,
     modelName: 'Band',
-    tableName: 'band',
+    tableName: 'bands',
     timestamps: false
 })
 
