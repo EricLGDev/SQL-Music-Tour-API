@@ -4,7 +4,7 @@ const sequelize = new Sequelize(process.env.PG_URI)
 class StageEvent extends Model{}
 
 StageEvent.init({
-    stage_events_id: {
+    stage_event_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -19,7 +19,7 @@ StageEvent.init({
     }
 }, {
     sequelize,
-    modelName: 'StageEvents',
+    modelName: 'StageEvent',
     tableName: 'stage_events',
     timestamps: false,
 })
