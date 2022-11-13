@@ -17,6 +17,26 @@ stages.get('/', async (req, res) => {
     }
 })
 
+// FIND A SPECIFIC STAGE
+stages.get('/:name', async (req, res) => {
+    try {
+        const foundStage = await Stage.findOne({
+            where: { stage_name: req.params.name },
+            include:{ 
+                model: Event, 
+                as: "events",
+                through: { attributes: [] }
+            },
+            order: [
+                [{ model: Event, as: "events" }, 'date', 'ASC'],
+            ]
+        })
+        res.status(200).json(foundStage)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 // CREATE A STAGE
 stages.post('/', async (req, res) => {
     try {
@@ -29,3 +49,5 @@ stages.post('/', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+module.exports = stages
